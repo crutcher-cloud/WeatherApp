@@ -8,12 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var temperature: UILabel!
+    @IBOutlet weak var weatherDescription: UILabel!
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var humidity: UILabel!
+    @IBOutlet weak var windSpeed: UILabel!
+    
+    var weatherList: [List] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        getWeather("Норильск", "RU")
     }
-
-
 }
 
