@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var weatherDescription: UILabel!
     @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var day: UILabel!
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
     

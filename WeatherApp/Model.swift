@@ -29,6 +29,14 @@ struct List: Decodable {
     let main: Main?
     let weather: [Weather?]
     let wind: Wind?
+    let dateTime: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case main
+        case weather
+        case wind
+        case dateTime = "dt_txt"
+    }
 }
 
 class Weather: Decodable {

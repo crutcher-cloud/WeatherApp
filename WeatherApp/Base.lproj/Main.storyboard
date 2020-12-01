@@ -119,6 +119,7 @@
                     </view>
                     <connections>
                         <outlet property="city" destination="ycx-O7-0RY" id="LZv-J6-s76"/>
+                        <outlet property="day" destination="Zzr-f7-e1k" id="Rko-X1-agI"/>
                         <outlet property="humidity" destination="5qJ-6p-uZj" id="6cS-Hq-q6H"/>
                         <outlet property="temperature" destination="INf-i4-Weh" id="ucR-dy-ih1"/>
                         <outlet property="weatherDescription" destination="6Jd-d3-t9i" id="c3h-HP-wjv"/>

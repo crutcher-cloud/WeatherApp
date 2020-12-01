@@ -28,6 +28,8 @@ extension ViewController {
                     self.humidity.text = "\(weatherData.list[0]?.main?.humidity ?? 0)%"
                     self.windSpeed.text = "\(lroundf(weatherData.list[0]?.wind?.speed ?? 0)) м/с"
                     
+                    setDay(dateString: weatherData.list[0]?.dateTime ?? "")
+                    
                     //Внесение полученного списка погоды в массив weatherList
                     for weather in weatherData.list {
                         self.weatherList.append(weather!)
@@ -38,11 +40,5 @@ extension ViewController {
                 }
             }
         })
-    }
-    
-    func showAlert(title: String, message: String, buttonText: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: buttonText, style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
 }
