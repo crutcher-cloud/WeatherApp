@@ -1,2 +1,2 @@
 # WeatherApp
-Repo for study iOS-development.
+Простое погодное приложение, созданное в рамках изучения iOS-разработки.
