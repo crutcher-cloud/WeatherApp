@@ -11,12 +11,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var weatherDescription: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
+   
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var day: UILabel!
+    @IBOutlet weak var timeOfDay: UILabel!
+   
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var windSpeed: UILabel!
-    
-    var weatherList: [List] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

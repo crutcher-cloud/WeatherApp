@@ -24,16 +24,15 @@ extension ViewController {
                     //Внесение загруженных с api.openweathermap.org в UI
                     self.temperature.text = "\(lroundf(weatherData.list[0]?.main?.temp ?? 0))°"
                     self.weatherDescription.text = weatherData.list[0]?.weather[0]?.description
+                    
                     self.city.text = weatherData.city?.name
                     self.humidity.text = "\(weatherData.list[0]?.main?.humidity ?? 0)%"
                     self.windSpeed.text = "\(lroundf(weatherData.list[0]?.wind?.speed ?? 0)) м/с"
                     
-                    setDay(dateString: weatherData.list[0]?.dateTime ?? "")
+                    //Установка иконки погоды с URL в UI
+                    setImageFromURL(imageCode: weatherData.list[0]?.weather[0]?.icon ?? "01d")
                     
-                    //Внесение полученного списка погоды в массив weatherList
-                    for weather in weatherData.list {
-                        self.weatherList.append(weather!)
-                    }
+                    setDayInfo(dateString: weatherData.list[0]?.dateTime ?? "", timeOfDay: weatherData.list[0]?.sys?.pod ?? "")
                 } catch {
                     showAlert(title: "Ошибка", message: "Не удалось загрузить погодные данные", buttonText: "OK")
                     print(error.localizedDescription)
