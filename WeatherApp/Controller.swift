@@ -17,7 +17,7 @@ extension ViewController {
     }
     
     //Функция, устанавливающая Месяц и День, полученные от api в UI
-    func setDay(dateString: String) {
+    func setDayInfo(dateString: String, timeOfDay: String) {
         let calendar = Calendar.current
         
         let customFormatter = DateFormatter()
@@ -34,5 +34,21 @@ extension ViewController {
         
         let day = "\(months[calendar.component(.month, from: date) - 1]), \(calendar.component(.day, from: date))"
         self.day.text = "\(day)"
+        
+        if timeOfDay == "d" {
+            self.timeOfDay.text = "День"
+        } else {
+            self.timeOfDay.text = "Ночь"
+        }
+    }
+    
+    func setImageFromURL(imageCode: String) {
+        let url = URL(string: "https://openweathermap.org/img/wn/\(imageCode)@2x.png")
+        do {
+            let data = try Data(contentsOf: url!)
+            self.weatherIcon.image = UIImage(data: data)
+        } catch {
+            print("Ошибка: \(error.localizedDescription)")
+        }
     }
 }

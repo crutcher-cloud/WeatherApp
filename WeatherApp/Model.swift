@@ -29,18 +29,22 @@ struct List: Decodable {
     let main: Main?
     let weather: [Weather?]
     let wind: Wind?
+    let sys: Sys?
+    
     let dateTime: String?
     
     enum CodingKeys: String, CodingKey {
         case main
         case weather
         case wind
+        case sys
         case dateTime = "dt_txt"
     }
 }
 
 class Weather: Decodable {
     dynamic var description: String?
+    dynamic var icon: String?
 }
 
 class Main: Decodable {
@@ -50,4 +54,8 @@ class Main: Decodable {
 
 class Wind: Decodable {
     dynamic var speed: Float? = 0
+}
+
+class Sys: Decodable {
+    dynamic var pod: String? = ""
 }
