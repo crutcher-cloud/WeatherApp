@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 extension ViewController {
-    func getWeather(_ city: String, _ lang: String) {
+    func getWeather(_ city: String, _ lang: String, completion: @escaping () -> Void) {
         let requestParameters = ["q": city, "lang": lang, "units": "metric", "appid": "bf30a4d5fcdd346f77adfbd891f586c8"]
         
         AF.request("https://api.openweathermap.org/data/2.5/forecast", parameters: requestParameters).responseData(completionHandler: { [self](response) in
@@ -25,14 +25,18 @@ extension ViewController {
                     self.temperature.text = "\(lroundf(weatherData.list[0]?.main?.temp ?? 0))°"
                     self.weatherDescription.text = weatherData.list[0]?.weather[0]?.description
                     
-                    self.city.text = weatherData.city?.name
-                    self.humidity.text = "\(weatherData.list[0]?.main?.humidity ?? 0)%"
-                    self.windSpeed.text = "\(lroundf(weatherData.list[0]?.wind?.speed ?? 0)) м/с"
+                    self.city.text = weatherData.city?.name ?? "Default City"
+                    self.humidityValue.text = "\(weatherData.list[0]?.main?.humidity ?? 0)%"
+                    self.windSpeedValue.text = "\(lroundf(weatherData.list[0]?.wind?.speed ?? 0)) м/с"
                     
                     //Установка иконки погоды с URL в UI
-                    setImageFromURL(imageCode: weatherData.list[0]?.weather[0]?.icon ?? "01d")
+                    DispatchQueue.main.async {
+                        setImageFromURL(imageCode: weatherData.list[0]?.weather[0]?.icon ?? "01d")
+                    }
                     
-                    setDayInfo(dateString: weatherData.list[0]?.dateTime ?? "", timeOfDay: weatherData.list[0]?.sys?.pod ?? "")
+                    setDayInfo(dateString: weatherData.list[0]?.dateTime ?? "")
+                    
+                    completion()
                 } catch {
                     showAlert(title: "Ошибка", message: "Не удалось загрузить погодные данные", buttonText: "OK")
                     print(error.localizedDescription)
