@@ -29,7 +29,6 @@ struct List: Decodable {
     let main: Main?
     let weather: [Weather?]
     let wind: Wind?
-    let sys: Sys?
     
     let dateTime: String?
     
@@ -37,7 +36,6 @@ struct List: Decodable {
         case main
         case weather
         case wind
-        case sys
         case dateTime = "dt_txt"
     }
 }
@@ -54,8 +52,4 @@ class Main: Decodable {
 
 class Wind: Decodable {
     dynamic var speed: Float? = 0
-}
-
-class Sys: Decodable {
-    dynamic var pod: String? = ""
 }
