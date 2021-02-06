@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension ViewController {
+    
+    //Функция, отображающая скрытые элементы в UI
     func showUI() {
         menuButton.isHidden = false
         
@@ -27,13 +29,6 @@ extension ViewController {
         windSpeedValue.isHidden = false
         
         activityIndicator.stopAnimating()
-    }
-    
-    //Функция отображающая UIAlertView
-    func showAlert(title: String, message: String, buttonText: String) {
-        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(.init(title: buttonText, style: .default, handler: nil))
-        self.present(alert, animated: true)
     }
     
     //Функция, устанавливающая месяц и часть суток
@@ -77,5 +72,9 @@ extension ViewController {
             showAlert(title: "Ошибка", message: "Не удалось загрузить иконку, попробуйте повторить позже", buttonText: "ОК")
             print("Ошибка: \(error.localizedDescription)")
         }
+    }
+    
+    //Segue для возвращения к MainViewController
+    @IBAction func unwindToMain(_ sender: UIStoryboardSegue) {
     }
 }

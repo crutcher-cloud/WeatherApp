@@ -7,14 +7,27 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, UITextFieldDelegate {
 
+    
+    @IBOutlet weak var defaultCityText: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        defaultCityText.delegate = self
     }
     
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        saveCity(city: defaultCityText.text ?? "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     /*
     // MARK: - Navigation

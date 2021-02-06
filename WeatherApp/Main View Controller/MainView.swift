@@ -27,16 +27,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var windSpeedValue: UILabel!
     
+    var defaultCity: String = {
+        //Установка значения города из UserDefaults
+        let def = UserDefaults()
+        guard def.value(forKey: "defaultCity") != nil else {
+            return "Москва"
+        }
+        return def.value(forKey: "defaultCity") as! String
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         humidityLabel.isHidden = true
         humidityValue.isHidden = true
         
         windSpeedLabel.isHidden = true
         windSpeedValue.isHidden = true
 
-        getWeather("Москва", "RU", completion: showUI)
+        getWeather(defaultCity, "RU")
     }
 }
 
